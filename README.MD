@@ -42,19 +42,19 @@ LoadBalancer-Project/
 
 ### backend1/server.js
 
-const express = require("express");
-const app = express();
-app.get("/", (req, res) => res.send("⚡ Backend 1 - Stable OK"));
-app.listen(3001, () => console.log("Backend1 running on port 3001"));
+ const express = require("express");
+ const app = express();
+ app.get("/", (req, res) => res.send("⚡ Backend 1 - Stable OK"));
+ app.listen(3001, () => console.log("Backend1 running on port 3001"));
 
 ---
 
 ### backend2/server.js
 
-const express = require("express");
-const app = express();
-app.get("/", (req, res) => res.send("🌱 Backend 2 - Canary OK"));
-app.listen(3002, () => console.log("Backend2 running on port 3002"));
+ const express = require("express");
+ const app = express();
+ app.get("/", (req, res) => res.send("🌱 Backend 2 - Canary OK"));
+ app.listen(3002, () => console.log("Backend2 running on port 3002"));
 
 ---
 
@@ -62,12 +62,12 @@ app.listen(3002, () => console.log("Backend2 running on port 3002"));
 
 ### Shared Dockerfile (inside each backend folder)
 
-FROM node:18
-WORKDIR /app
-COPY server.js .
-RUN npm install express
-EXPOSE 3001   # backend2 uses 3002
-CMD ["node","server.js"]
+ FROM node:18
+ WORKDIR /app
+ COPY server.js .
+ RUN npm install express
+ EXPOSE 3001   # backend2 uses 3002
+ CMD ["node","server.js"]
 
 ---
 
